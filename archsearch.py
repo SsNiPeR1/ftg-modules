@@ -45,4 +45,4 @@ class ARSMod(loader.Module):
         r = requests.get(f"https://www.archlinux.org/packages/{repo}/x86_64/{package}/json/").text
         data = json.loads(r)
 
-        await message.edit(data['pkgver'])
+        await message.edit(f"<b>Version of package</b> <code>{package}</code>: <code>{data['pkgver']}</code>")
