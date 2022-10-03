@@ -32,7 +32,7 @@ class ARSMod(loader.Module):
     @loader.unrestricted
     async def versioncmd(self, message):
         """Get the version of a package
-        .arv <package>"""
+        .arv <package> <repo>"""
         args = utils.get_args(message)
         if await self.allmodules.check_security(message, security.OWNER | security.SUDO):
             try:
