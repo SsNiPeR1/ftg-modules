@@ -49,4 +49,4 @@ class ARSMod(loader.Module):
             await message.edit(r)
             return
 
-        await message.edit(f"<b>Version of package</b> [{package}](https://archlinux.org/packages/core/x86_64/{package}) is <code>{data['pkgver']}</code>")
+        await message.edit(f"<b>Version of package</b> <a href='https://archlinux.org/packages/core/x86_64/{package}'>{package}</a> is <code>{data['pkgver']}</code>")
