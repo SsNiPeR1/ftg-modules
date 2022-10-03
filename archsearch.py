@@ -46,7 +46,7 @@ class ARSMod(loader.Module):
         try:
             data = json.loads(r)
         except json.decoder.JSONDecodeError as e:
-            await message.edit(f"<b>Some error occured:</b> <code>{e}</code>")
+            await message.edit(r)
             return
 
         await message.edit(f"<b>Version of package</b> [{package}](https://archlinux.org/packages/core/x86_64/{package}) is <code>{data['pkgver']}</code>")
