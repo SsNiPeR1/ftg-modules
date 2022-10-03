@@ -30,7 +30,7 @@ class ARSMod(loader.Module):
     strings = {"name": "ArchRepoSearch"}
 
     @loader.unrestricted
-    async def versioncmd(self, message):
+    async def arvcmd(self, message):
         """Get the version of a package
         .arv <package> <repo>"""
         args = utils.get_args(message)
