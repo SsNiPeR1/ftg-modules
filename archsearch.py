@@ -42,7 +42,7 @@ class ARSMod(loader.Module):
                 await message.edit(f"<b>Some error occured:</b> <code>{e}</code>")
                 return
         
-        r = requests.get(f"https://www.archlinux.org/packages/{repo}/{package}/json/").text
+        r = requests.get(f"https://www.archlinux.org/packages/{repo}/x86_64/{package}/json/").text
         data = json.loads(r)
 
         await message.edit(data['pkgver'])
