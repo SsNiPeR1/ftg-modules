@@ -57,10 +57,9 @@ class ColorMod(loader.Module):
         lv = len(color)
         c = tuple(int(color[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
         if not os.path.exists("Inconsolata.ttf"):
-            download_file(
-                "https://raw.githubusercontent.com/SsNiPeR1/ftg-modules/main/Inconsolata.ttf")
-        f = ImageFont.truetype("Inconsolata.ttf", 48)
-        font = ImageFont.truetype(f, 48)
+            download_file("https://raw.githubusercontent.com/SsNiPeR1/ftg-modules/main/Inconsolata.ttf")
+        fontfile = ImageFont.truetype("Inconsolata.ttf", 48)
+        font = ImageFont.truetype(fontfile, 48)
         img = Image.new('RGB', (400, 200), (c[0], c[1], c[2]))
         d = ImageDraw.Draw(img)
         if int(color, 16) <= 6710886:
