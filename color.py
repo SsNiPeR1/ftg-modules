@@ -38,7 +38,7 @@ class ColorMod(loader.Module):
         color = args[0].lstrip('#')
         lv = len(color)
         c = tuple(int(color[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
-        req = requests.get("https://github.com/googlefonts/roboto/blob/master/src/hinted/Roboto-Regular.ttf?raw=true")
+        req = requests.get("https://github.com/googlefonts/roboto/raw/main/src/hinted/Roboto-Regular.ttf?raw=true")
         fontfile = BytesIO(req.content)
         font = ImageFont.truetype(fontfile, 48)
         img = Image.new('RGB', (400, 200), (c[0], c[1], c[2]))
