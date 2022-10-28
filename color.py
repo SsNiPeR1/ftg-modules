@@ -50,4 +50,5 @@ class ColorMod(loader.Module):
         d.text((380, 180), "#" + color, fill=fc, anchor="rs", font=font)
         io = BytesIO()
         img.save(io, "PNG")
-        await message.edit(file=io)
+        io.seek(0)
+        await client.send_photo(message.chat.id, photo=io, caption=f"Color #{color}")
