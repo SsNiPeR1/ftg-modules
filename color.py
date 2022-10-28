@@ -18,36 +18,17 @@ import logging
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import os
-import requests
 
 from .. import loader, utils, security
 
 logger = logging.getLogger(__name__)
 
 
-def download_file(url):
-    local_filename = url.split('/')[-1]
-    with requests.get(url, stream=True) as r:
-        r.raise_for_status()
-        with open(local_filename, 'wb') as f:
-            for chunk in r.iter_content(chunk_size=8192):
-                f.write(chunk)
-    return local_filename
-
 
 @loader.tds
 class ColorMod(loader.Module):
     """Color Visualizer"""
     strings = {"name": "ColorVisualizer"}
-
-    def download_file(url):
-        local_filename = url.split('/')[-1]
-        with requests.get(url, stream=True) as r:
-            r.raise_for_status()
-            with open(local_filename, 'wb') as f:
-                for chunk in r.iter_content(chunk_size=8192):
-                    f.write(chunk)
-        return local_filename
 
     @loader.unrestricted
     async def colorcmd(self, message):
@@ -56,9 +37,8 @@ class ColorMod(loader.Module):
         color = args[0].lstrip('#')
         lv = len(color)
         c = tuple(int(color[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
-        if not os.path.exists("Inconsolata.ttf"):
-            download_file("https://raw.githubusercontent.com/SsNiPeR1/ftg-modules/main/Inconsolata.ttf")
-        fontfile = ImageFont.truetype("Inconsolata.ttf", 48)
+        req = requests.get("https://github.com/googlefonts/roboto/blob/master/src/hinted/Roboto-Regular.ttf?raw=true")
+        fontfile = ImageFont.truetype(BytesIO(req.content), 48)
         font = ImageFont.truetype(fontfile, 48)
         img = Image.new('RGB', (400, 200), (c[0], c[1], c[2]))
         d = ImageDraw.Draw(img)
