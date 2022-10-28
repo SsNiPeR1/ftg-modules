@@ -51,4 +51,4 @@ class ColorMod(loader.Module):
         io = BytesIO()
         img.save(io, "PNG")
         io.seek(0)
-        await self._client.send_file(message.peer_id, photo=io, caption=f"Color #{color}")
+        await self._client.send_file(message.peer_id, file=io, caption=f"Color #{color}")
