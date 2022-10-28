@@ -52,3 +52,4 @@ class ColorMod(loader.Module):
         img.save(io, "PNG")
         io.seek(0)
         await self._client.send_file(message.peer_id, file=io, caption=f"Color #{color}")
+        await message.delete()
