@@ -18,6 +18,7 @@ import logging
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import os
+import requests
 
 from .. import loader, utils, security
 
