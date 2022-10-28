@@ -20,7 +20,7 @@ from io import BytesIO
 import os
 import requests
 
-from .. import loader, utils, security, client
+from .. import loader, utils, security
 
 logger = logging.getLogger(__name__)
 
@@ -51,4 +51,4 @@ class ColorMod(loader.Module):
         io = BytesIO()
         img.save(io, "PNG")
         io.seek(0)
-        await client.send_photo(message.chat.id, photo=io, caption=f"Color #{color}")
+        await _self.client.send_photo(message.peer_id, photo=io, caption=f"Color #{color}")
