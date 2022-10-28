@@ -20,7 +20,7 @@ from io import BytesIO
 import os
 import requests
 
-from .. import loader, utils, security
+from .. import loader, utils, security, client
 
 logger = logging.getLogger(__name__)
 
